@@ -1,5 +1,7 @@
 package ru.netology.domain;
 
+import javax.crypto.spec.PSource;
+
 public class Conditioner {
 
     private int maxTemperature = 35;
@@ -13,10 +15,9 @@ public class Conditioner {
     }
 
     public void setOn(boolean on) {
-        if (on == false)
-            return;
         this.on = on;
     }
+
     public int getMaxTemperature() {
         return maxTemperature;
     }
@@ -51,18 +52,18 @@ public class Conditioner {
     }
 
     public int temperature() {
-        int additionTemperature = getCurrentTemperature();
-        if (isStatus() == true & isOn() == true) {
-            for (int i = additionTemperature; i <= getMaxTemperature(); i++) {
-                additionTemperature = i;
+        int temperature = getCurrentTemperature();
+            if (isOn() == true & isStatus() == true) {
+                for (int i = getCurrentTemperature(); i <= getMaxTemperature(); i++) {
+                    temperature = i;
+                }
             }
-        }
-        if (isStatus() == false & isOn() == true) {
-            for (int i = additionTemperature; i >= getMinTemperature(); i--) {
-                additionTemperature = i;
+            if (isOn() == true & isStatus() == false) {
+                for (int i = getCurrentTemperature(); i >= getMinTemperature(); i--) {
+                    temperature = i;
+                }
             }
-        }
-        return additionTemperature;
+            return temperature;
     }
 
 //    public void increaseCurrentTemperature(){
