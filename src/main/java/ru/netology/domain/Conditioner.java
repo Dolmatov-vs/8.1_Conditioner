@@ -1,14 +1,11 @@
 package ru.netology.domain;
 
-import javax.crypto.spec.PSource;
-
 public class Conditioner {
 
     private int maxTemperature = 35;
-    private int minTemperature = -35;
+    private int minTemperature = 5;
     private int currentTemperature;
     private boolean on;
-    private boolean status;     // true - температура вверх, false - температура вниз
 
     public boolean isOn() {
         return on;
@@ -26,22 +23,13 @@ public class Conditioner {
         return minTemperature;
     }
 
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
     public void setCurrentTemperature(int currentTemperature) {
-        if (currentTemperature > getMaxTemperature()) {
-            this.currentTemperature = getMaxTemperature();
+        if (currentTemperature > maxTemperature) {
+            this.currentTemperature = maxTemperature;
             return;
         }
-        if (currentTemperature < getMinTemperature()) {
-            this.currentTemperature = getMinTemperature();
+        if (currentTemperature < minTemperature) {
+            this.currentTemperature = minTemperature;
             return;
         }
         this.currentTemperature = currentTemperature;
@@ -51,38 +39,21 @@ public class Conditioner {
         return currentTemperature;
     }
 
-    public int temperature() {
-        int temperature = getCurrentTemperature();
-            if (isOn() == true & isStatus() == true) {
-                for (int i = getCurrentTemperature(); i <= getMaxTemperature(); i++) {
-                    temperature = i;
-                }
-            }
-            if (isOn() == true & isStatus() == false) {
-                for (int i = getCurrentTemperature(); i >= getMinTemperature(); i--) {
-                    temperature = i;
-                }
-            }
-            return temperature;
+
+    public void increaseCurrentTemperature(){
+        if (!isOn()) return;
+        if (currentTemperature >= maxTemperature)
+            return;
+        currentTemperature++;
     }
 
-//    public void increaseCurrentTemperature(){
-//        int increaseTemperature;
-//        if (isStatus() == true & isOn() == true) {
-//            for (int i = getCurrentTemperature(); i <= getMaxTemperature(); i++) {
-//                increaseTemperature = i;
-//            }
-//        }
-//
-//    }
-//    public void decreaseCurrentTemperature(){
-//        int decreaseTemperature = getCurrentTemperature();
-//        if (isStatus() == false & isOn() == true) {
-//            for (int i = decreaseTemperature; i >= getMinTemperature(); i--) {
-//                decreaseTemperature = i;
-//            }
-//        }
-//    }
+    public void decreaseCurrentTemperature(){
+        if (!isOn()) return;
+        if (currentTemperature <= minTemperature) {
+            return;
+        }
+        currentTemperature--;
+    }
 }
 
 
