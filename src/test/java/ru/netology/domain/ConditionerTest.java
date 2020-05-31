@@ -16,7 +16,7 @@ class ConditionerTest {
     }
 
     @Test
-    void сurrentTemperatureEquaMaxTemperature() {
+    void currentTemperatureEqualMaxTemperature() {
         Conditioner conditioner = new Conditioner();
         conditioner.setOn(true);
         conditioner.setCurrentTemperature(35);
@@ -25,7 +25,7 @@ class ConditionerTest {
     }
 
     @Test
-    void сurrentTemperatureMoreMaxTemperature() {
+    void currentTemperatureMoreMaxTemperature() {
         Conditioner conditioner = new Conditioner();
         conditioner.setOn(true);
         conditioner.setCurrentTemperature(36);
@@ -43,7 +43,7 @@ class ConditionerTest {
     }
 
     @Test
-    void сurrentTemperatureEquaMinTemperature() {
+    void currentTemperatureEqualMinTemperature() {
         Conditioner conditioner = new Conditioner();
         conditioner.setOn(true);
         conditioner.setCurrentTemperature(5);
@@ -52,7 +52,7 @@ class ConditionerTest {
     }
 
     @Test
-    void сurrentTemperatureLessMinTemperature() {
+    void currentTemperatureLessMinTemperature() {
         Conditioner conditioner = new Conditioner();
         conditioner.setOn(true);
         conditioner.setCurrentTemperature(4);
